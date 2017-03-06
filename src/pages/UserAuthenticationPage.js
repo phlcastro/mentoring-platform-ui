@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SignInFormContainer from '../containers/SignInFormContainer';
-import SignOnForm from '../components/SignOnForm';
+import SignOnFormContainer from '../containers/SignOnFormContainer';
 
 class UserAuthenticationPage extends Component {
   render() {
@@ -17,7 +17,7 @@ class UserAuthenticationPage extends Component {
         <p className='center-align'>or</p>
         <div className='row'>
           <div className='col s6 offset-s3'>
-            <SignOnForm />
+            <SignOnFormContainer />
           </div>
         </div>
       </div>
