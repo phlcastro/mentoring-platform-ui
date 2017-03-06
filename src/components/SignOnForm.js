@@ -54,7 +54,7 @@ class SignOnForm extends Component {
                   </div>
                 </div>
                 <div className='row center-align'>
-                  <button className='btn waves-effect waves-light' type='submit' >Submit</button>
+                  <button className='btn waves-effect waves-light' type='submit'>Submit</button>
                   <p className='FormError'>{this.props.errorMsg}</p>
                 </div>
               </form>
