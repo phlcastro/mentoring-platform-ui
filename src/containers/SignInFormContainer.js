@@ -1,4 +1,3 @@
-/*global $*/
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import sa from 'superagent';
@@ -29,6 +28,7 @@ class SignInFormContainer extends Component {
       .end((err, res) => {
         if(res.ok) {
           window.localStorage.setItem('jwt', res.body.jwt);
+          window.localStorage.setItem('role', res.body.role);
           this.props.router.push('/dashboard');
         }
         else {
