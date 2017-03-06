@@ -15,7 +15,7 @@ class SignInFormContainer extends Component {
     this.state = { errorMsg: '' };
   }
 
-  authenticateUser(email, password) {
+  authenticateUser({email, password}) {
 
     sa.post(`${this.API_URL}/user_token`)
       .set('Content-Type', 'application/json')
