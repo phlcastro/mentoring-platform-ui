@@ -26,7 +26,7 @@ class SignInForm extends Component {
           </div>
           <button className='btn waves-effect waves-light'
             onClick={e => this.props.onSubmitHandler(this.state.email, this.state.password)}>Submit</button>
-          <p className='text-red'>{this.props.errorMsg}</p>
+          <p className='FormError'>{this.props.errorMsg}</p>
         </div>
       </div>
     );
