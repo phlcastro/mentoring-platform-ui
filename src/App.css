@@ -9,3 +9,7 @@
 .FormError {
   color: red;
 }
+
+.FormSuccess {
+  color: green;
+}

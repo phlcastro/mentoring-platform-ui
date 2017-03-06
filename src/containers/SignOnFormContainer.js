@@ -32,6 +32,7 @@ class SignOnFormContainer extends Component {
       .end((err, res) => {
         if(res.ok) {
           window.localStorage.setItem('jwt', res.body.jwt);
+          window.localStorage.setItem('role', values.role);
           this.props.router.push('/dashboard');
         }
         else {
