@@ -1,9 +1,9 @@
-.nav-wrapper {
-  margin-top: 5px;
-}
-
 .brand-logo {
   margin-left: 10px;
+}
+
+.btn {
+  height: 3em;
 }
 
 .FormError {
@@ -12,4 +12,12 @@
 
 .FormSuccess {
   color: green;
+}
+
+.nav-wrapper {
+  margin-top: 5px;
+}
+
+td {
+  padding: 5px 5px;
 }

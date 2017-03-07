@@ -21,6 +21,7 @@ class NewQuestionForm extends Component {
 
   render() {
     let mentorsSelectOptions = this.props.mentorsList.map(mentor => ({label: mentor.name, value: mentor.id}));
+
     return (
       <Form onSubmit={(values, state, props, instance) => this.submitForm(values, state, props, instance)} validate={this.validateForm}>
         {({submitForm}) => {
