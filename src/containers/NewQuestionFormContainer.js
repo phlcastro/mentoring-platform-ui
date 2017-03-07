@@ -16,14 +16,14 @@ class NewQuestionFormContainer extends Component {
     };
   }
 
-  submitNewQuestion({mentor, question}, resetForm) {
+  submitNewQuestion({user, question}, resetForm) {
 
     sa.post(`${this.API_URL}/questions`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/mentoring-platform-v1')
       .set('Authorization', `Bearer ${window.localStorage.getItem('jwt')}`)
       .send({
-        to_user_id: mentor,
+        to_user_id: user,
         description: question
       })
       .end((err, res) => {
@@ -42,8 +42,8 @@ class NewQuestionFormContainer extends Component {
     return (
       <div className='col s6'>
         {
-          this.props.mentorsList.length > 0 &&
-          <NewQuestionForm mentorsList={this.props.mentorsList} onSubmitHandler={this.submitNewQuestion.bind(this)} errorMsg={this.state.errorMsg} successMsg={ this.state.successMsg } />
+          this.props.usersList.length > 0 &&
+          <NewQuestionForm usersList={this.props.usersList} userLabel={this.props.userLabel} onSubmitHandler={this.submitNewQuestion.bind(this)} errorMsg={this.state.errorMsg} successMsg={ this.state.successMsg } />
         }
       </div>
     );

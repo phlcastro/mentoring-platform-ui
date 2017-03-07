@@ -3,15 +3,15 @@ import { Form, Textarea, Select } from 'react-form';
 
 class NewQuestionForm extends Component {
 
-  validateForm({ mentor, question }) {
+  validateForm({ user, question }) {
     return {
-      mentor: !mentor ? 'Mentor is required' : undefined,
+      user: !user ? `${this.props.userLabel} is required` : undefined,
       question: !question ? 'Question is required' : undefined
     };
   }
 
   resetForm() {
-    this.setValue('mentor', '');
+    this.setValue('user', '');
     this.setValue('question', '');
   }
 
@@ -20,17 +20,17 @@ class NewQuestionForm extends Component {
   }
 
   render() {
-    let mentorsSelectOptions = this.props.mentorsList.map(mentor => ({label: mentor.name, value: mentor.id}));
+    let usersSelectOptions = this.props.usersList.map(user => ({label: user.name, value: user.id}));
 
     return (
-      <Form onSubmit={(values, state, props, instance) => this.submitForm(values, state, props, instance)} validate={this.validateForm}>
+      <Form onSubmit={(values, state, props, instance) => this.submitForm(values, state, props, instance)} validate={this.validateForm.bind(this)}>
         {({submitForm}) => {
           return (
             <div className='card-panel grey lighten-5'>
-              <h5 className='center-align'>Submit a new question to a mentor</h5>
+              <h5 className='center-align'>Submit a new question to a {this.props.userLabel}</h5>
               <form onSubmit={submitForm}>
                 <div className='input-field col s12'>
-                  <Select field='mentor' options={mentorsSelectOptions} className='browser-default' />
+                  <Select field='user' options={usersSelectOptions} className='browser-default' />
                 </div>
                 <div className='input-field col s12'>
                   <Textarea field='question' placeholder='Type here your question' className='materialize-textarea' />
