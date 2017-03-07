@@ -11,7 +11,6 @@ class NewQuestionFormContainer extends Component {
     this.API_URL = process.env.REACT_APP_API_ENDPOINT;
 
     this.state = {
-      resetForm: 0,
       errorMsg: '',
       successMsg: ''
     };
@@ -40,13 +39,12 @@ class NewQuestionFormContainer extends Component {
   }
 
   render() {
-    let cssClasses = `row ${this.props.className}`;
-
     return (
-      <div className={cssClasses}>
-        <div className='col s6'>
+      <div className='col s6'>
+        {
+          this.props.mentorsList.length > 0 &&
           <NewQuestionForm mentorsList={this.props.mentorsList} onSubmitHandler={this.submitNewQuestion.bind(this)} errorMsg={this.state.errorMsg} successMsg={ this.state.successMsg } />
-        </div>
+        }
       </div>
     );
   }
