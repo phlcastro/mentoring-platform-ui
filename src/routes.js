@@ -5,6 +5,7 @@ import App from './App';
 import UserAuthenticationPage from './pages/UserAuthenticationPage';
 import DashboardPage from './pages/DashboardPage';
 import QuestionsPage from './pages/QuestionsPage';
+import QuestionDetailPage from './pages/QuestionDetailPage'
 
 function requireAuth(nextState, replace){
   if(!window.localStorage.getItem('jwt')){
@@ -20,6 +21,7 @@ export default (
     <IndexRoute component={UserAuthenticationPage} />
     <Route path='dashboard' component={DashboardPage} onEnter={requireAuth}>
       <IndexRoute component={QuestionsPage} />
+      <Route path='questions/:id' component={QuestionDetailPage} />
     </Route>
   </Route>
 );

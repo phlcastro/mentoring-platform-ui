@@ -12,6 +12,7 @@ class DashboardPage extends Component {
 
     this.state = {
       mentorsList: [],
+      menteesList: [],
       availableMentorsList: []
     };
   }
@@ -68,6 +69,7 @@ class DashboardPage extends Component {
     let children = React.Children.map(this.props.children,
                                       child => React.cloneElement(child, {
                                         mentorsList: this.state.mentorsList,
+                                        menteesList: this.state.menteesList,
                                         availableMentorsList: this.state.availableMentorsList,
                                         updateAllMentorsListCallback: this.updateAllMentorsList.bind(this)
                                       }));

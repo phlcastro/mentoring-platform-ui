@@ -14,13 +14,27 @@ class QuestionsPage extends Component {
   }
 
   render() {
+    let newQuestionFormContainer = '';
+
+    if(this.state.userRole === 'mentee') {
+      newQuestionFormContainer = (
+        <NewQuestionFormContainer usersList={this.props.mentorsList} userLabel='Mentor' />
+      );
+    }
+    else {
+      newQuestionFormContainer = (
+        <NewQuestionFormContainer usersList={this.props.menteesList} userLabel='Mentee' />
+      );
+    }
+
     return (
-      <div className={`row ${this.state.userRole === 'mentee' ? '' : 'hide'}`}>
+      <div className='row'>
         <QuestionsListTableContainer />
-        <MentorsListContainer mentorsList={this.props.mentorsList}
-                              availableMentorsList={this.props.availableMentorsList}
-                              updateAllMentorsListCallback={this.props.updateAllMentorsListCallback} />
-        <NewQuestionFormContainer mentorsList={this.props.mentorsList} />
+        { this.state.userRole === 'mentee' &&
+          <MentorsListContainer mentorsList={this.props.mentorsList}
+                                availableMentorsList={this.props.availableMentorsList}
+                                updateAllMentorsListCallback={this.props.updateAllMentorsListCallback} /> }
+        {newQuestionFormContainer}
       </div>
     );
   }

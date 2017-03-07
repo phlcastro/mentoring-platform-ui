@@ -36,22 +36,22 @@ class QuestionsListTableContainer extends Component {
 
   closeQuestion(question) {
     sa.patch(`${this.API_URL}/questions/${question}`)
-          .set('Content-Type', 'application/json')
-          .set('Accept', 'application/mentoring-platform-v1')
-          .set('Authorization', `Bearer ${window.localStorage.getItem('jwt')}`)
-          .send({
-            question: { status: 'closed' }
-          })
-          .end((err, res) => {
-            if(res.ok) {
-              this.updateQuestionsList();
-              this.setState({ successMsg: 'Question closed successfully' });
-            }
-            else {
-              let errorDetails = JSON.parse(err.response.text);
-              this.setState({ errorMsg: `Something went wrong. ${errorDetails.error}` });
-            }
-          });
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/mentoring-platform-v1')
+      .set('Authorization', `Bearer ${window.localStorage.getItem('jwt')}`)
+      .send({
+        question: { status: 'closed' }
+      })
+      .end((err, res) => {
+        if(res.ok) {
+          this.updateQuestionsList();
+          this.setState({ successMsg: 'Question closed successfully' });
+        }
+        else {
+          let errorDetails = JSON.parse(err.response.text);
+          this.setState({ errorMsg: `Something went wrong. ${errorDetails.error}` });
+        }
+      });
   }
 
   componentDidMount() {
