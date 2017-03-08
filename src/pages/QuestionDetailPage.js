@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import sa from 'superagent';
 
+import Loading from '../components/Loading';
 import NewAnswerForm from '../components/NewAnswerForm';
 
 class QuestionDetailPage extends Component {
@@ -73,19 +74,7 @@ class QuestionDetailPage extends Component {
 
     if (this.state.isLoading) {
       body = (
-        <div className='center-align'>
-          <div className='preloader-wrapper big active center-align'>
-            <div className='spinner-layer spinner-blue'>
-              <div className='circle-clipper left'>
-                <div className='circle'></div>
-              </div><div className='gap-patch'>
-                <div className='circle'></div>
-              </div><div className='circle-clipper right'>
-                <div className='circle'></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Loading />
       );
     }
     else {
