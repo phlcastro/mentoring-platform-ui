@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import sa from 'superagent';
 
+import Loading from '../components/Loading';
 import QuestionsListTable from '../components/QuestionsListTable';
 
 class QuestionsListTableContainer extends Component {
@@ -11,6 +12,7 @@ class QuestionsListTableContainer extends Component {
     this.API_URL = process.env.REACT_APP_API_ENDPOINT;
 
     this.state = {
+      isLoading: true,
       questionsList: [],
       errorMsg: '',
       successMsg: ''
@@ -25,6 +27,7 @@ class QuestionsListTableContainer extends Component {
       .end((err, res) => {
         if(res.ok) {
           this.setState({
+            isLoading: false,
             questionsList: res.body.questions
           });
         }
@@ -65,7 +68,12 @@ class QuestionsListTableContainer extends Component {
         <p className='FormError'>{this.state.errorMsg}</p>
         <p className='FormSuccess'>{this.state.successMsg}</p>
         <div className='card-panel grey lighten-5'>
-          <QuestionsListTable questionsList={this.state.questionsList} onCloseQuestion={this.closeQuestion.bind(this)} />
+          {
+            this.state.isLoading ?
+              <Loading />
+            :
+              <QuestionsListTable questionsList={this.state.questionsList} onCloseQuestion={this.closeQuestion.bind(this)} />
+          }
         </div>
       </div>
     );

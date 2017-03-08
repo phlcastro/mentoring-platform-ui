@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import NewQuestionFormContainer from '../containers/NewQuestionFormContainer';
+import Loading from '../components/Loading';
 import MentorsListContainer from '../containers/MentorsListContainer';
+import NewQuestionFormContainer from '../containers/NewQuestionFormContainer';
 import QuestionsListTableContainer from '../containers/QuestionsListTableContainer';
 
 class QuestionsPage extends Component {
@@ -27,16 +28,21 @@ class QuestionsPage extends Component {
       );
     }
 
-    return (
-      <div className='row'>
-        <QuestionsListTableContainer />
-        { this.state.userRole === 'mentee' &&
-          <MentorsListContainer mentorsList={this.props.mentorsList}
-                                availableMentorsList={this.props.availableMentorsList}
-                                updateAllMentorsListCallback={this.props.updateAllMentorsListCallback} /> }
-        {newQuestionFormContainer}
-      </div>
-    );
+    const body = this.props.isLoading ?
+                   <Loading />
+                 :
+                   (
+                      <div className='row'>
+                        <QuestionsListTableContainer />
+                        { this.state.userRole === 'mentee' &&
+                          <MentorsListContainer mentorsList={this.props.mentorsList}
+                                                availableMentorsList={this.props.availableMentorsList}
+                                                updateAllMentorsListCallback={this.props.updateAllMentorsListCallback} /> }
+                        {newQuestionFormContainer}
+                      </div>
+                    );
+
+    return body;
   }
 }
 
